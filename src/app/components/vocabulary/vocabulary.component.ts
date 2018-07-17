@@ -43,6 +43,7 @@ export class VocabularyComponent implements OnInit {
   ngOnInit(): void {
     this.model.words = [new Word("Test", "Тест"), new Word("Tree", "Дерево")];
     this.model.valueLang = "en";
+    this.model.words[1].thumbnailUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaGIRrG4CvK7LDInLnHUT1-OxQBa8zurmhGzAdf-o7JLXlUUxiQvOyMiY';
   }
 
   getWordThumbnailAsync(word: Word) {
