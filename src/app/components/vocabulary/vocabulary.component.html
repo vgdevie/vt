@@ -1,0 +1,44 @@
+<div class="container">
+  <table>
+      <thead>
+          <tr>
+              <th>Word</th>
+              <th>Translation</th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let word of model.words; let i = index">
+              <td>
+                  <img *ngIf="word.thumbnailUrl" [src]="word.thumbnailUrl"  (click)="getWordThumbnailAsync(word)">
+              </td>
+              <td>
+                  <input type="text" [(ngModel)]="word.value" />
+              </td>
+              <td>
+                  <input type="text" [(ngModel)]="word.translation" />
+              </td>
+              <td>
+                  <input class="button button-clear" type="button" value="remove" (click)="removeWord(i)">
+              </td>
+              <td>
+                <input class="button button-clear" type="button" value="speak" (click)="speakWord(word)">
+            </td>
+          </tr>
+          <tr>
+              <td>
+                  <input #myInput type="text" [(ngModel)]="newWord.value" (keydown.Tab)="focusTranslation()" (keydown.Enter)="focusTranslation()" />
+              </td>
+              <td>
+                  <input #myInputS type="text" [(ngModel)]="newWord.translation" (keydown.Enter)="addNewWord()" />
+              </td>
+              <td>
+                  <input class="button" type="button" value="add" (click)="addNewWord()">
+              </td>
+              <td>
+                  <input class="button button-clear" type="button" value="translate" (click)="translateNewWordAsync()">
+            </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

@@ -1,0 +1,9 @@
+<div class="test-step">
+  <div class="test-container">
+    <div class="test-answers">
+      <div class="answer" *ngFor="let answer of current.answers; let i=index">
+        <input type="button" class="button button-minimal" [value]="answer.translation">
+      </div>
+    </div>
+  </div>
+</div>
