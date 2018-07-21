@@ -1,0 +1,106 @@
+/* Simple styles framework for small PWA */
+/* Mobile first */
+
+/* Variables */
+
+@n: 1rem; // 10px
+@n-navbar: 5rem;
+
+@c-primary: #eee;
+@c-text: #333;
+
+/* Mixxins */
+
+.vg-transition(@target) {
+    @transition: @target 0.1s linear;
+    -webkit-transition: @transition;
+    -moz-transition:  @transition;
+    -o-transition:  @transition;
+    transition:  @transition;
+}
+
+.tablet(@rules) {
+    @media (min-width: 768px) { @rules(); }
+  }
+
+.desktop(@rules) {
+    @media (min-width: 1024px) { @rules(); }
+}
+
+/* Styles */
+
+html {
+    font-size: 62.5%
+}
+
+body {
+    color: @c-text;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+    font-size: 1.6rem;
+    letter-spacing: 0.01em;
+}
+
+.vg-navbar {
+    background-color: @c-primary;
+    height: @n-navbar;
+    position: fixed;
+    width: 100%;
+    line-height: @n-navbar;
+    user-select: none;
+
+    .vg-nav-button {
+        display: block;
+        background-color: darken(@c-primary, 5%);
+        width: @n-navbar;
+        height: @n-navbar;
+        text-align: center;
+        font-size: 4rem;
+        float: left;
+        cursor: pointer;
+        .vg-transition(background-color);
+
+        &:hover {
+            background-color: darken(@c-primary, 10%);
+        }
+
+        label {
+            height: @n-navbar;
+            width: @n-navbar;
+            display: block;
+        }
+
+        #vg-nav-check {
+            display: none;
+
+            &:not(:checked) + .vg-nav {
+                left: -20rem;
+            }
+
+            &:checked + .vg-nav {
+                left: 0rem;
+            }
+        }
+    }
+
+    .vg-app-title {
+        padding: 0 2rem;
+        float: left;
+    }
+}
+
+.vg-nav {
+    position: fixed;
+    top: @n-navbar;
+    background-color: @c-primary;
+    .vg-transition(left);
+}
+
+.vg-view-container {
+    padding-top: @n-navbar;
+}
+
+.vg-view {
+    padding: @n;
+}
