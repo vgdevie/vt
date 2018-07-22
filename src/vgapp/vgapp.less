@@ -1,0 +1,198 @@
+/* Simple styles framework for small PWA */
+/* Mobile first */
+
+@import (reference) './vgapp.theme.light.less';
+@import (reference) './vgapp.mixins.less';
+
+// #region GENERAL
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: @c-text;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.01em;
+}
+
+// #endregion GENERAL
+
+// #region NAVBAR
+.vg-navbar {
+  background-color: @c-primary;
+  height: @n-navbar;
+  position: fixed;
+  width: 100%;
+  line-height: @n-navbar;
+  user-select: none;
+
+  .vg-nav-btn {
+    height: @n-navbar;
+    width: @n-navbar;
+    display: block;
+    text-align: center;
+    float: left;
+    font-size: 3.5rem;
+    cursor: pointer;
+    .transition(background-color);
+
+    &:not(.no-icon)::before {
+      // Default munu icon
+      content: "☰";
+    }
+
+    .desktop({
+      display: none;
+    });
+  }
+
+  #vg-nav-check {
+    display: none;
+
+    &:not(:checked) + .vg-nav-pane {
+      left: -@n-nav-width;
+    }
+
+    &:checked + .vg-nav-pane {
+      left: 0rem;
+    }
+  }
+
+  .vg-nav-pane {
+    position: fixed;
+    top: @n-navbar;
+    background-color: @c-primary;
+    width: @n-nav-width;
+    height: @n-navbar;
+    z-index: 50;
+    .transition(left);
+
+    .desktop({
+      position: static;
+      width: auto;
+      float: right;
+    });
+
+    & > .vg-nav-item {
+      height: @n-navbar;
+      display: block;
+      background-color: darken(@c-primary, 5%);
+      cursor: pointer;
+
+      &:hover {
+        background-color: darken(@c-primary, 10%);
+
+        .desktop({
+          background-color: initial;
+          text-decoration: underline;
+        });
+      }
+
+      .desktop({
+        display: inline-block;
+        background-color: initial;
+      });
+
+      & > .vg-nav-icon {
+        width: @n-navbar;
+        height: @n-navbar;
+        float: left;
+        text-align: center;
+        font-size: 2.5rem;
+
+        .desktop({
+          display: none;
+        });
+      }
+
+      & > .vg-nav-text {
+        float: left;
+        padding: 0 1rem;
+
+        .desktop({
+          padding-right: 0;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        });
+
+
+      }
+    }
+  }
+
+  .vg-app-title {
+    padding: 0 1rem;
+    float: left;
+    font-size: 2rem;
+
+    .desktop({
+      padding: 0;
+    });
+  }
+}
+// #endregion NAVBAR
+
+.vg-container {
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+
+.vg-view-container {
+  padding-top: @n-navbar;
+
+  .vg-view {
+    padding: @n;
+  }
+}
+
+
+input.vg-btn {
+	border: none;
+	background-color: #eee;
+	padding: 1rem;
+	border-radius: 0.5rem;
+  cursor: pointer;
+
+  &.primary {
+    background-color: @c-primary;
+  }
+}
+
+// #region Loader
+
+.vg-loader {
+  position: fixed;
+  background-color: fade(@c-background, 70%);
+  z-index: 50;
+  width: 100%;
+  top: @n-navbar;
+  .calc-height(@n-navbar, 100%);
+
+  .vg-loader-icon {
+    display: inline-block;
+    width: 6.4rem;
+    height: 6.4rem;
+    .absolute-center();
+
+    &::after {
+      content: " ";
+      display: block;
+      width: 46px;
+      height: 46px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 5px solid #000;
+      border-color: #000 transparent #000 transparent;
+      .animation(infinitrotate 1.2s linear infinite);
+    }
+  }
+}
+
+// #endregion Loader

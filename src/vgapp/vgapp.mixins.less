@@ -1,0 +1,94 @@
+// * Mixins
+
+.transition(@target) {
+  @transition: @target 0.1s linear;
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  -o-transition: @transition;
+  transition: @transition;
+}
+
+.transform(@string){
+	-webkit-transform: @string;
+	-moz-transform: 	 @string;
+	-ms-transform: 		 @string;
+	-o-transform: 		 @string;
+}
+
+.absolute-center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  .transform(translate(-50%, -50%));
+}
+
+.calc-width(@margin, @fallback) {
+  width: @fallback;
+  width: -o-calc(~"100% - "@margin);
+  width: -webkit-calc(~"100% - "@margin); /** Safari 6, Chrome 19-25 **/
+  width: -moz-calc(~"100% - "@margin); /** FF 4-15  **/
+  width: calc(~"100% - "@margin); /** FF 16+, IE 9+, Opera 15, Chrome 26+, Safari 7 and future other browsers **/
+}
+
+.calc-height(@margin, @fallback) {
+  height: @fallback;
+  height: -o-calc(~"100% - "@margin);
+  height: -webkit-calc(~"100% - "@margin);
+  height: -moz-calc(~"100% - "@margin);
+  height: calc(~"100% - "@margin);
+}
+
+// * Animation mixins
+
+.define-animation(@name,@rules) {
+
+  @-webkit-keyframes @name {
+      @rules();
+  }
+
+  @-moz-keyframes @name {
+      @rules();
+  }
+
+  @-ms-keyframes @name {
+      @rules();
+  }
+
+  @-o-keyframes @name {
+      @rules();
+  }
+
+  @keyframes @name {
+      @rules();
+  }
+}
+
+.animation(@prop) {
+  animation: @prop;
+  -ms-animation: @prop;
+  -moz-animation: @prop;
+  -webkit-animation: @prop;
+  -o-animation: @prop;
+}
+
+// * Media mixins
+
+.tablet(@rules) {
+  @media (min-width: 768px) {
+    @rules();
+  }
+}
+
+.desktop(@rules) {
+  @media (min-width: 1024px) {
+    @rules();
+  }
+}
+
+// * Animations definitions
+
+.define-animation(infinitrotate, {
+  100% {
+    .transform(rotate(360deg));
+  }
+});

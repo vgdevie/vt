@@ -1,21 +1,40 @@
 <header class="vg-navbar">
-  <div class="vg-nav-button">
-    <label for="vg-nav-check">
-      <span></span>
-      <span></span>
-      <span></span>
+  <div class="vg-container">
+    <label for="vg-nav-check" class="vg-nav-btn no-icon">
+        <i class="la la-bars"></i>
     </label>
     <input type="checkbox" id="vg-nav-check">
-    <div class="vg-nav">
-      <div class="vg-nav-item">
-        <span class="vg-nav-icon">H</span>
-        <span class="vg-nav-text">Home</span>
-      </div>
+    <div class="vg-nav-pane">
+      <a class="vg-nav-item">
+        <div class="vg-nav-icon"><i class="la la-home"></i></div>
+        <div class="vg-nav-text">Home</div>
+      </a>
+      <a class="vg-nav-item">
+        <div class="vg-nav-icon"><i class="la la-cog"></i></div>
+        <div class="vg-nav-text">Settings</div>
+      </a>
     </div>
+    <span class="vg-app-title">App</span>
   </div>
-  <span class="vg-app-title">VT</span>
 </header>
 
 <div class="vg-view-container">
-  <app-vocabulary></app-vocabulary>
+  <!--<app-vocabulary></app-vocabulary>-->
+  <div class="vg-view">
+    <div class="vg-container">
+      <p>Test</p>
+      <br>
+      <input class="vg-btn" type="button" value="test">
+      <br>
+      <input class="vg-btn clear" type="button" value="test">
+      <br>
+      <input class="vg-btn primary" type="button" value="test">
+      <br>
+      <input type="text" value="test">
+    </div>
+  </div>
+</div>
+
+<div class="vg-loader">
+  <div class="vg-loader-icon"></div>
 </div>
