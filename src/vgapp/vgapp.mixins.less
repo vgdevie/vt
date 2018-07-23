@@ -8,6 +8,13 @@
   transition: @transition;
 }
 
+.transition-custom(@transition) {
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  -o-transition: @transition;
+  transition: @transition;
+}
+
 .transform(@string){
 	-webkit-transform: @string;
 	-moz-transform: 	 @string;
@@ -20,6 +27,16 @@
   top: 50%;
   left: 50%;
   .transform(translate(-50%, -50%));
+}
+
+.opacity(@opacity) {
+  @mfopacity: @opacity*100;
+  @fopacity: "alpha(opacity=@{mfopacity})";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=@{mfopacity})";
+  filter: ~"@{fopacity}";
+  -webkit-opacity: @opacity;
+  -moz-opacity: @opacity;
+  opacity: @opacity;
 }
 
 .calc-width(@margin, @fallback) {
@@ -90,5 +107,16 @@
 .define-animation(infinitrotate, {
   100% {
     .transform(rotate(360deg));
+  }
+});
+
+.define-animation(loaderfadeinout, {
+  0% {
+    .opacity(0);
+    .calc-height(@n-navbar, 100%);
+  }
+  100% {
+    .opacity(1);
+    .calc-height(@n-navbar, 100%);
   }
 });
