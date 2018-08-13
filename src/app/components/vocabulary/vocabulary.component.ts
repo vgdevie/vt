@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
-import { Vocabulary, Word } from "src/app/models";
-import { TranslatorService , ImageService} from "src/app/services";
-import { SpeechHelper } from "src/app/helpers";
+import { Vocabulary, Word } from "../../models";
+import { TranslatorService , ImageService} from "../../services";
+import { SpeechHelper } from "../../helpers";
 
 @Component({
   selector: "app-vocabulary",

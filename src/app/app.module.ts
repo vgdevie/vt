@@ -4,23 +4,29 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
-import { VocabularyComponent, TesterComponent, AppComponent } from './components';
+import { VocabularyComponent, TesterComponent, AppComponent, SettingsComponent } from './components';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ImageService, TranslatorService } from './services';
 
-
+const routes: Routes = [
+  { path: '', component: VocabularyComponent },
+  { path: 'settings', component: SettingsComponent },
+  { path: 'tester', component: TesterComponent },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     VocabularyComponent,
-    TesterComponent
+    TesterComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    RouterModule.forRoot(routes),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ImageService, TranslatorService],
