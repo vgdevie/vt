@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
-import { VocabularyComponent, TesterComponent, AppComponent, SettingsComponent } from './components';
+import { VocabularyComponent, TesterComponent, AppComponent, SettingsComponent, VocabularyListComponent } from './components';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ImageService, TranslatorService } from './services';
@@ -20,7 +20,8 @@ const routes: Routes = [
     AppComponent,
     VocabularyComponent,
     TesterComponent,
-    SettingsComponent
+    SettingsComponent,
+    VocabularyListComponent
   ],
   imports: [
     BrowserModule,

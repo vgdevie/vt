@@ -1,46 +1,56 @@
 <div class="vg-view">
-    <div class="vg-container">
-  <table>
-      <thead>
-          <tr>
-              <th>Word</th>
-              <th>Translation</th>
-              <th></th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let word of model.words; let i = index">
-              <td>
-                  <img *ngIf="word.thumbnailUrl" [src]="word.thumbnailUrl"  (click)="getWordThumbnailAsync(word)">
-              </td>
-              <td>
-                  <input type="text" [(ngModel)]="word.value" />
-              </td>
-              <td>
-                  <input type="text" [(ngModel)]="word.translation" />
-              </td>
-              <td>
-                  <input class="button button-clear" type="button" value="remove" (click)="removeWord(i)">
-              </td>
-              <td>
-                <input class="button button-clear" type="button" value="speak" (click)="speakWord(word)">
-            </td>
-          </tr>
-          <tr>
-              <td>
-                  <input #myInput type="text" [(ngModel)]="newWord.value" (keydown.Tab)="focusTranslation()" (keydown.Enter)="focusTranslation()" />
-              </td>
-              <td>
-                  <input #myInputS type="text" [(ngModel)]="newWord.translation" (keydown.Enter)="addNewWord()" />
-              </td>
-              <td>
-                  <input class="button" type="button" value="add" (click)="addNewWord()">
-              </td>
-              <td>
-                  <input class="button button-clear" type="button" value="translate" (click)="translateNewWordAsync()">
-            </td>
-          </tr>
-      </tbody>
-  </table>
-  </div>
+    <div class="vg-container row">
+        <div class="col-xs-12 col-md-4">
+            <app-vocabulary-list></app-vocabulary-list>
+        </div>
+        <div class="col-xs-12 col-md-8">
+                <div class="row head">
+                        <div class="col-xs-2">
+                            Image
+                        </div>
+                        <div class="col-xs-4">
+                            Word
+                        </div>
+                        <div class="col-xs-4">
+                            Translation
+                        </div>
+                        <div class="col-xs-2">
+                            Controls
+                        </div>
+                    </div>
+                    <div class="row" *ngFor="let word of model.words; let i = index">
+                        <div class="col-xs-2">
+                            <img style="max-height: 100%;" *ngIf="word.thumbnailUrl" [src]="word.thumbnailUrl" (click)="getWordThumbnailAsync(word)">
+                        </div>
+                        <div class="col-xs-4">
+                            <input type="text" [(ngModel)]="word.value" />
+                        </div>
+                        <div class="col-xs-4">
+                            <input type="text" [(ngModel)]="word.translation" />
+                        </div>
+                        <div class="col-xs-2">
+                            <input class="button button-clear" type="button" value="remove" (click)="removeWord(i)">
+                            <input class="button button-clear" type="button" value="speak" (click)="speakWord(word)">
+                        </div>
+                    </div>
+            
+                    <div class="row head">
+                        <div class="col-xs-2">
+            
+                        </div>
+                        <div class="col-xs-4">
+                            <input #myInput type="text" [(ngModel)]="newWord.value" (keydown.Tab)="focusTranslation()" (keydown.Enter)="focusTranslation()"
+                            />
+                        </div>
+                        <div class="col-xs-4">
+                            <input #myInputS type="text" [(ngModel)]="newWord.translation" (keydown.Enter)="addNewWord()" />
+                        </div>
+                        <div class="col-xs-2">
+                            <input class="button" type="button" value="add" (click)="addNewWord()">
+                            <input class="button button-clear" type="button" value="translate" (click)="translateNewWordAsync()">
+                        </div>
+                    </div>
+        </div>
+        
+    </div>
 </div>

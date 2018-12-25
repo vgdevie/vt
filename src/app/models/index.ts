@@ -1,4 +1,4 @@
-export * from './vocabulary';
+export * from './voca';
 export * from './test.item';
 export * from './test.results';
 export * from './word';
